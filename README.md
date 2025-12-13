@@ -1,1 +1,1 @@
-# Project-for-Introduction-to-Specialization
+Репозиторий для проекта по введению в специальность/инвидуальному проекту
