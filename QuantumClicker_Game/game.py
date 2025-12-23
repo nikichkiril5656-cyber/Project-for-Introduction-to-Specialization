@@ -88,7 +88,6 @@ class QuantumClicker:
         self.quantum_energy = 0.0
         self.infinite_points = 0
         self.eternity_points = 0
-        self.unity_points = 0
         self.revolution_count = 0
         self.generators = {
             'Квантовый Источник': {'count': 0, 'base_cost': 10, 'base_rate': 0.1, 'unlocked': True},
@@ -111,7 +110,6 @@ class QuantumClicker:
         self.last_update = pygame.time.get_ticks()
         self.infinity_threshold = 1e6
         self.eternity_threshold = 1e12
-        self.unity_threshold = 1e20
         self.infinity_unlocked = False
         self.eternity_unlocked = False
         self.unity_unlocked = False
@@ -153,7 +151,6 @@ class QuantumClicker:
                     'quantum_energy': float(self.quantum_energy),
                     'infinite_points': int(self.infinite_points),
                     'eternity_points': int(self.eternity_points),
-                    'unity_points': int(self.unity_points),
                     'revolution_count': int(self.revolution_count),
                     'total_clicks': int(self.total_clicks),
                     'total_particles': float(self.total_particles),
@@ -213,7 +210,6 @@ class QuantumClicker:
             self.quantum_energy = float(basic.get('quantum_energy', 0))
             self.infinite_points = int(basic.get('infinite_points', 0))
             self.eternity_points = int(basic.get('eternity_points', 0))
-            self.unity_points = int(basic.get('unity_points', 0))
             self.revolution_count = int(basic.get('revolution_count', 0))
             self.total_clicks = int(basic.get('total_clicks', 0))
             self.total_particles = float(basic.get('total_particles', 0))
@@ -392,8 +388,8 @@ class QuantumClicker:
         self.screen.blit(power_text, power_rect)
 
         # Панель ресурсов - ПЕРЕМЕЩЕНА ЕЩЕ НИЖЕ, чтобы не перекрывать кнопку
-        resources_y = click_y + click_size + 70  # Увеличено расстояние
-        panel_height = 210
+        resources_y = click_y + click_size + 100  # Увеличено расстояние
+        panel_height = 180
         self.create_panel(40, resources_y, screen_width-80, panel_height, "Ресурсы")
         resources_start_y = resources_y + 50
         resources = [
@@ -401,7 +397,6 @@ class QuantumClicker:
             ("Квантовая Энергия", self.quantum_energy, self.COLORS['resource_energy'], 0),
             ("Очки Бесконечности", self.infinite_points, self.COLORS['resource_infinite'], 0),
             ("Очки Вечности", self.eternity_points, self.COLORS['resource_eternity'], 0),
-            ("Очки Единства", self.unity_points, self.COLORS['resource_unity'], 0),
         ]
         for i, (label, value, color, max_val) in enumerate(resources):
             y_pos = resources_start_y + i * 32
@@ -495,12 +490,7 @@ class QuantumClicker:
                 f"Очки вечности: {self.eternity_points}",
                 f"Множитель кликов: x{self.eternity_bonus:.2f}",
                 f"Требуется: 100 очков бесконечности"
-            ], self.COLORS['accent_violet']),
-            ("ЕДИНСТВО", [
-                f"Очки единства: {self.unity_points}",
-                f"Скидка: {self.unity_points * 2:.2f}%",
-                f"Требуется: 1e20 частиц"
-            ], self.COLORS['accent_magenta'])
+            ], self.COLORS['accent_violet'])
         ]
         for section_title, lines, color in info_sections:
             title_surf = self.fonts['large'].render(section_title, True, color)
@@ -511,7 +501,7 @@ class QuantumClicker:
                 self.screen.blit(line_surf, (80, info_y))
                 info_y += 25
             info_y += 15
-        button_y = screen_height - 170
+        button_y = screen_height - 200
         if self.quantum_particles >= self.infinity_threshold:
             btn_rect = self.create_button(screen_width//2 - 180, button_y, 360, 50,
                                        "ДОСТИГНУТЬ БЕСКОНЕЧНОСТИ", True, False,
@@ -544,7 +534,6 @@ class QuantumClicker:
             "Революция сохраняет:",
             f"  • Очки бесконечности ({self.infinite_points})",
             f"  • Очки вечности ({self.eternity_points})",
-            f"  • Очки единства ({self.unity_points})",
             f"  • Революции ({self.revolution_count})",
         ]
         for line in info_lines:
@@ -861,16 +850,27 @@ class QuantumClicker:
 
     def handle_infinity_click(self, pos):
         screen_width, screen_height = self.screen.get_size()
+
+        # --- Копируем логику из show_infinity_tab ---
+        button_y = screen_height - 200 # <-- Начальная позиция
         if self.quantum_particles >= self.infinity_threshold:
-            btn_rect = pygame.Rect(screen_width//2 - 180, screen_height - 170, 360, 50)
+            # btn_rect = self.create_button(screen_width//2 - 180, button_y, 360, 50, ...)
+            button_y += 60 # <-- Смещаем, как в show_infinity_tab
+        # --- Конец копирования логики ---
+
+        if self.quantum_particles >= self.infinity_threshold:
+            btn_rect = pygame.Rect(screen_width//2 - 180, screen_height - 200, 360, 50) # <-- Позиция первой кнопки
             if btn_rect.collidepoint(pos):
                 self.perform_infinity_reset()
                 return True
+
         if self.infinite_points >= 100:
-            btn_rect = pygame.Rect(screen_width//2 - 180, screen_height - 110, 360, 50)
+            # Используем вычисленное значение button_y, как в show_infinity_tab
+            btn_rect = pygame.Rect(screen_width//2 - 180, button_y, 360, 50) # <-- Теперь Y динамический!
             if btn_rect.collidepoint(pos):
                 self.perform_eternity_reset()
                 return True
+
         return False
 
     def handle_revolutions_click(self, pos):
@@ -938,7 +938,6 @@ class QuantumClicker:
         for gen in self.generators.values():
             gen['count'] = 0
         for upgrade in self.upgrades.values():
-            if upgrade.get('currency') not in ['infinite_points', 'eternity_points', 'unity_points']:
                 upgrade['level'] = 0
                 upgrade['bought'] = False
         self.infinity_threshold *= 2
