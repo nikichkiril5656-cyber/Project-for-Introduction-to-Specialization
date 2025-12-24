@@ -435,7 +435,7 @@ class QuantumClicker:
             self.screen.blit(cost_surf, (screen_width-240, y_offset + 15))
             btn_text = "КУПИТЬ" if can_afford else "НЕДОСТАТОЧНО"
             btn_color = self.COLORS['accent_blue'] if can_afford else self.COLORS['button_disabled']
-            btn_rect = self.create_button(screen_width-240, y_offset + 35, 150, 35,
+            btn_rect = self.create_button(screen_width-275, y_offset + 35, 205, 35,
                                        btn_text, can_afford, False, btn_color)
             y_offset += 90
 
@@ -469,7 +469,7 @@ class QuantumClicker:
                 self.screen.blit(cost_surf, (screen_width-240, y_offset + 15))
                 btn_text = "КУПИТЬ" if can_afford else "НЕДОСТАТОЧНО"
                 btn_color = self.COLORS['warning'] if can_afford else self.COLORS['button_disabled']
-                btn_rect = self.create_button(screen_width-240, y_offset + 35, 150, 35,
+                btn_rect = self.create_button(screen_width-275, y_offset + 35, 205, 35,
                                            btn_text, can_afford, False, btn_color)
             y_offset += 90
 
@@ -820,7 +820,7 @@ class QuantumClicker:
             if not data['unlocked']:
                 y_offset += 90
                 continue
-            btn_rect = pygame.Rect(screen_width-240, y_offset + 35, 150, 35)
+            btn_rect = pygame.Rect(screen_width-275, y_offset + 35, 205, 35)
             if btn_rect.collidepoint(pos):
                 cost = data['base_cost'] * (1.15 ** data['count'])
                 if self.quantum_particles >= cost:
@@ -841,7 +841,7 @@ class QuantumClicker:
             max_level = upgrade.get('max_level', 1)
             maxed = max_level > 0 and upgrade['level'] >= max_level
             if not maxed:
-                btn_rect = pygame.Rect(screen_width-240, y_offset + 35, 150, 35)
+                btn_rect = pygame.Rect(screen_width-275, y_offset + 35, 205, 35)
                 if btn_rect.collidepoint(pos):
                     self.buy_upgrade(upgrade_id)
                     return True
