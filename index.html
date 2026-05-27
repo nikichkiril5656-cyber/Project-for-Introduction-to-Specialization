@@ -378,13 +378,13 @@
 <body>
 <div class="game-container">
     <div class="sidebar">
-        <button class="tab-btn active" data-tab="training">🏋️ TRAINING</button>
-        <button class="tab-btn" data-tab="stats">📊 STATS</button>
-        <button class="tab-btn" data-tab="missions">📜 MISSIONS</button>
-        <button class="tab-btn" data-tab="combat">⚔️ COMBAT</button>
-        <button class="tab-btn" data-tab="inventory">🎒 INVENTORY</button>
+        <button class="tab-btn active" data-tab="training">🏋️ ТРЕНИРОВКА</button>
+        <button class="tab-btn" data-tab="stats">📊 СТАТИСТИКА</button>
+        <button class="tab-btn" data-tab="missions">📜 МИССИИИ</button>
+        <button class="tab-btn" data-tab="combat">⚔️ БИТВЫ</button>
+        <button class="tab-btn" data-tab="inventory">🎒 ИНВЕНТАРЬ</button>
         <button class="tab-btn" data-tab="rng">🎲 RNG</button>
-        <button class="tab-btn" data-tab="shop">🛒 SHOP</button>
+        <button class="tab-btn" data-tab="shop">🛒 МАГАЗИН</button>
     </div>
 
     <div class="main-content">
@@ -394,29 +394,29 @@
                 <div class="player-name" id="playerName">Ghoulish</div>
             </div>
             <div class="resource-group">
-                <div class="resource">⭐ RANK: <span id="rankDisplay">C</span> <button class="rank-up-btn" id="rankUpBtn">▲ RANK UP</button></div>
+                <div class="resource">⭐ РАНГ: <span id="rankDisplay">C</span> <button class="rank-up-btn" id="rankUpBtn">▲ Повысить ранг</button></div>
                 <div class="resource">🩸 RC: <span class="value" id="rcVal">0</span></div>
                 <div class="resource">💰 YEN: <span class="value" id="yenVal">0</span></div>
                 <div class="resource">✨ SF: <span class="value" id="sfVal">0</span></div>
             </div>
         </div>
 
-        <div id="tab-training" class="tab-content"><div class="card"><h2>🏋️ TRAINING GROUNDS</h2><div class="training-grid" id="trainingGrid"></div></div></div>
-        <div id="tab-stats" class="tab-content" style="display:none"><div class="card"><h2>📊 STATS</h2><div id="profileSection"></div><div id="statUpgrades"></div><div id="kaguneEquipment"></div><div id="combatStatsGrid"></div></div></div>
-        <div id="tab-missions" class="tab-content" style="display:none"><div class="card"><h2>📜 MISSIONS</h2><div id="storylineMissions"></div><h3>⚔️ OPTIONAL (WAVES)</h3><div id="optionalMissions"></div></div></div>
-        <div id="tab-combat" class="tab-content" style="display:none"><div class="card"><h2>⚔️ COMBAT</h2><div id="enemySelect"></div><div id="combatArena" style="display:none"></div></div></div>
-        <div id="tab-inventory" class="tab-content" style="display:none"><div class="card"><h2>🎒 SKILL INVENTORY</h2><div class="skill-slots" id="skillSlots"></div><div class="small-text" id="equipHint" style="margin-bottom:15px;">🔧 Click a skill, THEN click a slot to equip | Click on any skill in slot to remove</div><h3>📚 KAGUNE SKILLS</h3><div class="skill-library" id="kaguneSkills"></div><h3>👑 BOSS DROP SKILLS</h3><div class="skill-library" id="bossSkills"></div><h3>🛡️ DEFAULT SKILLS</h3><div class="skill-library" id="defaultSkills"></div></div></div>
-        <div id="tab-rng" class="tab-content" style="display:none"><div class="card"><h2>🎲 RNG ROLL</h2><div id="rngContainer"></div><div class="small-text" id="pityDisplay" style="margin-top:10px"></div></div></div>
-        <div id="tab-shop" class="tab-content" style="display:none"><div class="card"><h2>🛒 YEN SHOP</h2><div id="yenShop"></div><div class="rebirth-shop"><h3>🌀 REBIRTH SHOP (SF)</h3><div id="rebirthShop"></div></div></div></div>
+        <div id="tab-training" class="tab-content"><div class="card"><h2>🏋️ ТРЕНИРОВОЧНАЯ АРЕНА</h2><div class="training-grid" id="trainingGrid"></div></div></div>
+        <div id="tab-stats" class="tab-content" style="display:none"><div class="card"><h2>📊 СТАТИСТИКИ</h2><div id="profileSection"></div><div id="statUpgrades"></div><div id="kaguneEquipment"></div><div id="combatStatsGrid"></div></div></div>
+        <div id="tab-missions" class="tab-content" style="display:none"><div class="card"><h2>📜 МИССИИИ</h2><div id="storylineMissions"></div><h3>⚔️ РЕЙДЫ</h3><div id="optionalMissions"></div></div></div>
+        <div id="tab-combat" class="tab-content" style="display:none"><div class="card"><h2>⚔️ БИТВЫ</h2><div id="enemySelect"></div><div id="combatArena" style="display:none"></div></div></div>
+        <div id="tab-inventory" class="tab-content" style="display:none"><div class="card"><h2>🎒 ИНВЕНТАРЬ</h2><div class="skill-slots" id="skillSlots"></div><div class="small-text" id="equipHint" style="margin-bottom:15px;">🔧 Нажмите на способность, затем на слот для экипировки | Нажмите на слот для снятия</div><h3>📚 СПОСОБНОСТИ КАГУНЕ</h3><div class="skill-library" id="kaguneSkills"></div><h3>👑 СПОСОБНОСТИ С БОССОВ</h3><div class="skill-library" id="bossSkills"></div><h3>🛡️ БАЗОВЫЕ СПОСОБНОСТИ</h3><div class="skill-library" id="defaultSkills"></div></div></div>
+        <div id="tab-rng" class="tab-content" style="display:none"><div class="card"><h2>🎲 RNG</h2><div id="rngContainer"></div><div class="small-text" id="pityDisplay" style="margin-top:10px"></div></div></div>
+        <div id="tab-shop" class="tab-content" style="display:none"><div class="card"><h2>🛒 МАГАЗИН YEN</h2><div id="yenShop"></div><div class="rebirth-shop"><h3>🌀 МАГАЗИН ПЕРЕРОЖДЕНИЙ (SF)</h3><div id="rebirthShop"></div></div></div></div>
     </div>
 </div>
 
 <div id="profileModal" class="modal" style="display:none">
     <div class="modal-content">
-        <h2 style="color:#ff8888;">👤 EDIT PROFILE</h2>
+        <h2 style="color:#ff8888;">👤 ИЗМЕНИТЬ ПРОФИЛЬ</h2>
         <input type="text" id="nicknameInput" maxlength="20" placeholder="Enter nickname">
         
-        <div class="avatar-section-title">🎭 Emoji Avatars</div>
+        <div class="avatar-section-title">🎭 Аватары</div>
         <div class="avatar-selector" id="emojiAvatars">
             <div class="avatar-option" data-avatar="👤" data-type="emoji">👤</div>
             <div class="avatar-option" data-avatar="🐺" data-type="emoji">🐺</div>
@@ -436,21 +436,9 @@
             <div class="avatar-option" data-avatar="☠️" data-type="emoji">☠️</div>
         </div>
         
-        <div class="avatar-section-title">🖼️ Tokyo Ghoul Characters</div>
-        <div class="avatar-selector" id="characterAvatars">
-            <div class="avatar-option" data-avatar="👦" data-type="emoji" title="Kaneki">👦</div>
-            <div class="avatar-option" data-avatar="👧" data-type="emoji" title="Touka">👧</div>
-            <div class="avatar-option" data-avatar="👨" data-type="emoji" title="Amon">👨</div>
-            <div class="avatar-option" data-avatar="👩" data-type="emoji" title="Akira">👩</div>
-            <div class="avatar-option" data-avatar="🤵" data-type="emoji" title="Yoshimura">🤵</div>
-            <div class="avatar-option" data-avatar="🧑‍🦱" data-type="emoji" title="Ayato">🧑‍🦱</div>
-            <div class="avatar-option" data-avatar="🧑‍🦰" data-type="emoji" title="Uta">🧑‍🦰</div>
-            <div class="avatar-option" data-avatar="🧛" data-type="emoji" title="Vampire">🧛</div>
-        </div>
-        
         <div class="custom-upload-section">
-            <div class="avatar-section-title" style="margin-top:0;">📤 Upload Custom Avatar</div>
-            <label class="upload-btn" for="avatarUpload">📁 Choose Image</label>
+            <div class="avatar-section-title" style="margin-top:0;">📤 Загрузить свой аватар</div>
+            <label class="upload-btn" for="avatarUpload">📁 Выбрать файл</label>
             <input type="file" id="avatarUpload" accept="image/*">
             <div style="font-size:0.75rem; color:#8b5a5a; margin-top:8px;">Max: 200KB • PNG, JPG, GIF</div>
             
@@ -467,8 +455,8 @@
         </div>
         
         <div>
-            <button id="saveProfileBtn">💾 SAVE PROFILE</button>
-            <button id="closeModalBtn">❌ CLOSE</button>
+            <button id="saveProfileBtn">💾 СОХРАНИТЬ ИЗМЕНЕНИЯ</button>
+            <button id="closeModalBtn">❌ ЗАКРЫТЬ</button>
         </div>
     </div>
 </div>
@@ -479,7 +467,7 @@
     function showToast(message, type = "error") {
         const container = document.getElementById("toastContainer");
         
-        while (container.children.length >= 5) {
+        while (container.children.length >= 3) {
             container.removeChild(container.firstChild);
         }
         
@@ -615,7 +603,7 @@
     function handleAvatarUpload(event) {
         const file = event.target.files[0];
         if(!file) return;
-        if(file.size > 200 * 1024) { showToast("File too large! Max 200KB", "error"); event.target.value = ''; return; }
+        if(file.size > 200 * 1024) { showToast("Файл слишком большой! Max 200KB", "error"); event.target.value = ''; return; }
         const reader = new FileReader();
         reader.onload = function(e) {
             const base64 = e.target.result;
@@ -625,7 +613,7 @@
             document.getElementById("previewSize").textContent = (file.size / 1024).toFixed(1) + ' KB';
             document.getElementById("uploadPreview").classList.add("active");
             document.querySelectorAll(".avatar-option").forEach(o => o.classList.remove("selected"));
-            showToast("Avatar uploaded! Click SAVE to apply", "success");
+            showToast("Аватар сохранён! Нажмите СОХРАНЕНИТЬ для сохранения изменений", "success");
         };
         reader.readAsDataURL(file);
     }
@@ -638,7 +626,7 @@
             o.classList.remove("selected");
             if(o.getAttribute("data-avatar") === "👤") o.classList.add("selected");
         });
-        showToast("Custom avatar removed", "success");
+        showToast("Кастомный аватар убран", "success");
     }
 
     function saveGame() {
@@ -682,7 +670,11 @@
     }
 
     function unlockByRank() {
-        trainingData.forEach(t => { if(t.rankReq === rank) t.unlocked = true; });
+        trainingData.forEach(t => {
+            if(rankOrder[rank] >= rankOrder[t.rankReq]) {
+                t.unlocked = true;
+            }
+        });
         let idx = rankOrder[rank];
         let kaguneByRank = ["Wing Slash", "Shard Barrage", "Air Dash", "Crystal Rain", "Gale Force", "Storm Barrage"];
         for(let i=0; i<=idx && i<kaguneByRank.length; i++) {
@@ -702,15 +694,15 @@
             rank = nextRank;
             unlockByRank();
             updateUI();
-            showToast(`⭐ Rank up! You are now ${rank} rank!`, "success");
+            showToast(`⭐ Ранг повышен! Теперь вы ${rank} ранга!`, "success");
         } else {
-            showToast(`Need ${needed} Deyour Progress and complete "${requiredMission.name}" mission!`, "error");
+            showToast(`Надо ${needed} дейур и завершить миссию "${requiredMission.name}"!`, "error");
         }
     }
 
     function startTraining(idx) {
         let t = trainingData[idx];
-        if(!t.unlocked) { showToast(`Requires ${t.rankReq} rank!`, "error"); return; }
+        if(!t.unlocked) { showToast(`Требуется ${t.rankReq} ранг!`, "error"); return; }
         if(t.interval) return;
         t.timer = t.duration;
         t.interval = setInterval(() => {
@@ -722,7 +714,7 @@
                 let yenGain = t.yen * bonus;
                 rc += rcGain; yen += yenGain;
                 updateUI();
-                showToast(`🏋️ ${t.name} complete! +${Math.floor(rcGain)} RC, +${Math.floor(yenGain)} Yen`, "success");
+                showToast(`🏋️ ${t.name} завершена! +${Math.floor(rcGain)} RC, +${Math.floor(yenGain)} Yen`, "success");
             } else { t.timer--; renderTraining(); }
         }, 1000);
         renderTraining();
@@ -736,7 +728,7 @@
                 <div class="train-name">${t.name}</div>
                 <div class="train-reward">+${t.rc} RC +${t.yen} Y</div>
                 <div class="train-rank">[${t.rankReq}]</div>
-                ${t.interval ? `<div class="timer-bar"><div class="timer-progress" style="width:${(t.timer/t.duration)*100}%"></div></div><div class="small-text">${t.timer}s</div>` : '<div class="small-text">⚡ TAP TO TRAIN</div>'}
+                ${t.interval ? `<div class="timer-bar"><div class="timer-progress" style="width:${(t.timer/t.duration)*100}%"></div></div><div class="small-text">${t.timer}s</div>` : '<div class="small-text">⚡ Нажмите для тренировки</div>'}
             </div>
         `).join('');
     }
@@ -745,7 +737,7 @@
     function upgradeStat(stat) {
         let cost = statCost(stat);
         if(rc >= cost) { rc -= cost; statLevels[stat]++; updateUI(); }
-        else showToast(`Need ${cost} RC!`, "error");
+        else showToast(`Нужно ${cost} RC!`, "error");
     }
 
     function renderStats() {
@@ -753,13 +745,13 @@
         let need = requiredDeyour[next] || 1;
         let profile = `<div class="flex-between"><div><span style="font-size:1.3rem;">${playerAvatar.type === 'image' ? '🖼️' : playerAvatar.value}</span> ${playerName}<br><span class="small-text">Ghoulish</span></div><div>⭐ ${rank}</div></div>
         <div class="progress-bar"><div class="progress-fill" style="width:${Math.min(100, (deyourProgress/need)*100)}%"></div></div>
-        <div class="small-text">⚔️ Deyour Progress: ${deyourProgress} / ${need}</div>`;
+        <div class="small-text">⚔️ Дейур прогресс: ${deyourProgress} / ${need}</div>`;
         document.getElementById("profileSection").innerHTML = profile;
         
         let statsHtml = Object.keys(statLevels).map(s => `
             <div class="stat-row"><span><b>${s}</b></span><span>Lv.${statLevels[s]}</span><button class="upgrade-stat" onclick="upgradeStat('${s}')">${Math.floor(statCost(s))} RC</button></div>
         `).join('');
-        document.getElementById("statUpgrades").innerHTML = `<h3>⚡ STAT UPGRADE</h3>${statsHtml}`;
+        document.getElementById("statUpgrades").innerHTML = `<h3>⚡ УЛУЧШЕНИЕ СТАТИСТИК</h3>${statsHtml}`;
         
         let atk = getBaseATK();
         let hp = getMaxHP();
@@ -770,17 +762,17 @@
         let trainSpeed = 100 + statLevels.AGI * 1.5 + shopLevels.trainingSpeed * 10;
         let yenBonus = statLevels.INT * 1.5 + shopLevels.yenMulti * 10;
         
-        document.getElementById("combatStatsGrid").innerHTML = `<h3>📈 COMBAT STATS</h3><div class="combat-stats-grid">
-            <div class="combat-stat-item">💥 Base ATK: ${atk}</div>
-            <div class="combat-stat-item">❤️ Max HP: ${Math.floor(hp)}</div>
-            <div class="combat-stat-item">🌀 Dodge: ${dodge.toFixed(1)}%</div>
-            <div class="combat-stat-item">⚡ Crit Chance: ${critChance.toFixed(1)}%</div>
-            <div class="combat-stat-item">💢 Crit DMG: ${critDmg}%</div>
-            <div class="combat-stat-item">📦 RC Bonus: +${rcBonus}%</div>
-            <div class="combat-stat-item">🏃 Train Speed: +${trainSpeed-100}%</div>
-            <div class="combat-stat-item">💰 Yen Bonus: +${yenBonus}%</div>
+        document.getElementById("combatStatsGrid").innerHTML = `<h3>📈 БОЕВЫЕ СТАТИСТИКИ</h3><div class="combat-stats-grid">
+            <div class="combat-stat-item">💥 Базовая атака: ${atk}</div>
+            <div class="combat-stat-item">❤️ Максимальное HP: ${Math.floor(hp)}</div>
+            <div class="combat-stat-item">🌀 Шанс уворота: ${dodge.toFixed(1)}%</div>
+            <div class="combat-stat-item">⚡ Крит. Шанс: ${critChance.toFixed(1)}%</div>
+            <div class="combat-stat-item">💢 Крит. Урон: ${critDmg}%</div>
+            <div class="combat-stat-item">📦 Бонус RC: +${rcBonus}%</div>
+            <div class="combat-stat-item">🏃 Скорость тренировки: +${trainSpeed-100}%</div>
+            <div class="combat-stat-item">💰 Бонус Yen: +${yenBonus}%</div>
         </div>`;
-        document.getElementById("kaguneEquipment").innerHTML = `<h3>🩸 KAGUNE & EQUIPMENT</h3><div>⚔️ ${rngItems.kagune}</div><div>🎭 ${rngItems.combatStyle}</div><div>📈 ${rngItems.rcMulti}</div>`;
+        document.getElementById("kaguneEquipment").innerHTML = `<h3>🩸 КАГУНЕ И ОБОРУДОВАНИЕ</h3><div>⚔️ ${rngItems.kagune}</div><div>🎭 ${rngItems.combatStyle}</div><div>📈 ${rngItems.rcMulti}</div>`;
     }
 
 
@@ -794,23 +786,23 @@
             }
             rc += 500; yen += 1000;
             updateUI();
-            showToast(`✅ ${mission.name} complete! +500 RC, +1000 Yen, gained: ${mission.rewardSkill}`, "success");
+            showToast(`✅ ${mission.name} завершена! +500 RC, +1000 Yen, получено: ${mission.rewardSkill}`, "success");
         } else {
             showToast(`Need ${mission.rankReq} rank!`, "error");
         }
     }
 
     function startStorylineBattle(missionIndex) {
-        if(combatCooldown > 0) { showToast(`Wait ${combatCooldown}s!`, "error"); return; }
+        if(combatCooldown > 0) { showToast(`Подождите ${combatCooldown}s!`, "error"); return; }
         let mission = storylineMissions[missionIndex];
-        if(mission.completed) { showToast("Mission already completed!", "error"); return; }
+        if(mission.completed) { showToast("Миссия уже выполнена!", "error"); return; }
         if(rankOrder[rank] < rankOrder[mission.rankReq]) {
-            showToast(`Need ${mission.rankReq} rank!`, "error"); return; }
+            showToast(`Нужен ${mission.rankReq} ранг!`, "error"); return; }
         
         switchTab('combat');
         
         let bossEnemy = {
-            name: `🎭 ${mission.name} Boss`,
+            name: `🎭 ${mission.name} Босс`,
             rankReq: mission.rankReq,
             rcReward: 300,
             hp: 400 + rankOrder[mission.rankReq] * 150,
@@ -829,12 +821,12 @@
         document.getElementById("enemySelect").style.display = "none";
         document.getElementById("combatArena").style.display = "block";
         
-        showToast(`⚔️ Battle started: ${bossEnemy.name}!`, "success");
+        showToast(`⚔️ Битва началась: ${bossEnemy.name}!`, "success");
     }
 
     function startOptional(optName) {
         if(combatCooldown > 0) { 
-            showToast(`Wait ${combatCooldown}s!`, "error"); 
+            showToast(`Подождите ${combatCooldown}s!`, "error"); 
             return; 
         }
     
@@ -842,7 +834,7 @@
         if(!config) return;
     
         if(rankOrder[rank] < rankOrder[config.minRank]) {
-            showToast(`Need ${config.minRank} rank to start ${optName.toUpperCase()}!`, "error");
+            showToast(`Нужен ${config.minRank} ранг для начала ${optName.toUpperCase()}!`, "error");
             return;
         }
 
@@ -851,7 +843,7 @@
         currentWaveIndex = 1;
     
         let waveEnemy = {
-            name: `${config.enemyNames[0]} (Wave ${currentWaveNumber}.${currentWaveIndex})`,
+            name: `${config.enemyNames[0]} (Волна ${currentWaveNumber}.${currentWaveIndex})`,
             rankReq: config.minRank,
             rcReward: Math.floor(config.baseReward * (0.5 + currentWaveNumber * 0.1)),
             hp: config.baseHp + (currentWaveNumber - 1) * 50 + (currentWaveIndex - 1) * 30,
@@ -869,28 +861,28 @@
         document.getElementById("enemySelect").style.display = "none";
         document.getElementById("combatArena").style.display = "block";
     
-        showToast(`🌊 ${optName.toUpperCase()} Wave ${currentWaveNumber}.${currentWaveIndex} starting!`, "success");
+        showToast(`🌊 ${optName.toUpperCase()} Волна ${currentWaveNumber}.${currentWaveIndex} началась!`, "success");
     }
 
     function renderMissions() {
         let storyline = storylineMissions.map((m, idx) => {
             let isUnlocked = rankOrder[rank] >= rankOrder[m.rankReq];
             let action = m.completed 
-                ? `<span style="color:#44ff44;">✅ COMPLETED</span>`
+                ? `<span style="color:#44ff44;">✅ ЗАВЕРШЕНО</span>`
                 : (isUnlocked 
-                    ? `<button onclick="startStorylineBattle(${idx})" style="background:#4a1a1a;border:1px solid #aa3333;color:#ffaa88;padding:4px 12px;border-radius:20px;cursor:pointer;">⚔️ BATTLE</button>`
+                    ? `<button onclick="startStorylineBattle(${idx})" style="background:#4a1a1a;border:1px solid #aa3333;color:#ffaa88;padding:4px 12px;border-radius:20px;cursor:pointer;">⚔️ В БОЙ</button>`
                     : `<span style="color:#8b5a5a;">🔒 ${m.rankReq}+</span>`);
-            return `<div class="mission-item ${m.completed ? 'completed' : ''}">
+            return `<div class="mission-item ${m.completed ? 'завершено' : ''}">
                 <b>${m.name}</b> [${m.rankReq}] ${action}
-                <div class="small-text">🏆 Reward: ${m.rewardSkill}${m.completed ? ' ✅' : ''}</div>
+                <div class="small-text">🏆 Награда: ${m.rewardSkill}${m.completed ? ' ✅' : ''}</div>
             </div>`;
         }).join('');
-        document.getElementById("storylineMissions").innerHTML = `<h3>📖 STORYLINE</h3>${storyline}`;
+        document.getElementById("storylineMissions").innerHTML = `<h3>📖 СЮЖЕТ</h3>${storyline}`;
         
         let optionalHtml = `
-            <div class="optional-wave"><span><b>AOGIRI RAID</b> [B] - 200Y +30Y/wave<br><span class="small-text">Wave: ${optionalWaves.aogiri}</span></span><button onclick="startOptional('aogiri')">⚔️ RAID</button></div>
-            <div class="optional-wave"><span><b>COCHLEA BREAKOUT</b> [A] - 400Y +50Y/wave<br><span class="small-text">Wave: ${optionalWaves.cochlea}</span></span><button onclick="startOptional('cochlea')">⚔️ RAID</button></div>
-            <div class="optional-wave"><span><b>OWL SUPPRESSION</b> [S] - 800Y +80Y/wave<br><span class="small-text">Wave: ${optionalWaves.owl}</span></span><button onclick="startOptional('owl')" disabled="" title="Requires Rank S">⚔️ RAID</button>
+            <div class="optional-wave"><span><b>AOGIRI RAID</b> [B] - 200Y +30Y/wave<br><span class="small-text">Волна: ${optionalWaves.aogiri}</span></span><button onclick="startOptional('aogiri')" title="Request rank B">⚔️ В БОЙ</button></div>
+            <div class="optional-wave"><span><b>COCHLEA BREAKOUT</b> [A] - 400Y +50Y/wave<br><span class="small-text">Волна: ${optionalWaves.cochlea}</span></span><button onclick="startOptional('cochlea')" title="Request rank A">⚔️ В БОЙ</button></div>
+            <div class="optional-wave"><span><b>OWL SUPPRESSION</b> [S] - 800Y +80Y/wave<br><span class="small-text">Волна: ${optionalWaves.owl}</span></span><button onclick="startOptional('owl')" title="Request rank S">⚔️ В БОЙ</button>
         `;
         document.getElementById("optionalMissions").innerHTML = optionalHtml;
     }
@@ -900,37 +892,37 @@
         let removedSkill = equippedSkills[slotIndex];
         if(removedSkill && removedSkill !== "") {
             equippedSkills[slotIndex] = "";
-            showToast(`🗑️ Removed ${removedSkill} from slot ${slotIndex+1}`, "success");
+            showToast(`🗑️ Убран ${removedSkill} с слота ${slotIndex+1}`, "success");
             renderInventory();
         }
     }
     function selectSkillForEquip(skillName) {
         if(isSkillEquipped(skillName)) {
-            showToast(`❌ ${skillName} is already equipped in another slot!`, "error");
+            showToast(`❌ ${skillName} уже одет в другой слот!`, "error");
             return;
         }
         selectedSkillForEquip = skillName;
         document.querySelectorAll('.skill-badge').forEach(el => el.classList.remove('selected-skill'));
         if(event && event.target) event.target.classList.add('selected-skill');
-        document.getElementById("equipHint").innerHTML = `🔧 Selected: <span style="color:#ffcc44;">${skillName}</span> → Click on a slot to equip`;
+        document.getElementById("equipHint").innerHTML = `🔧 Выбран: <span style="color:#ffcc44;">${skillName}</span> → Нажмите на слот для оборудования`;
     }
     function equipToSlot(slotIndex) {
         if(selectedSkillForEquip) {
             if(isSkillEquipped(selectedSkillForEquip)) {
-                showToast(`❌ ${selectedSkillForEquip} is already equipped in another slot!`, "error");
+                showToast(`❌ ${selectedSkillForEquip} уже одет в другой слот!`, "error");
                 selectedSkillForEquip = null;
                 document.querySelectorAll('.skill-badge').forEach(el => el.classList.remove('selected-skill'));
-                document.getElementById("equipHint").innerHTML = `🔧 Click a skill, THEN click a slot to equip | Click on any skill in slot to remove`;
+                document.getElementById("equipHint").innerHTML = `🔧 Нажмите на способность, затем на слот для оборудования | Нажмите на способность в слоте для снятия`;
                 return;
             }
             equippedSkills[slotIndex] = selectedSkillForEquip;
             selectedSkillForEquip = null;
             document.querySelectorAll('.skill-badge').forEach(el => el.classList.remove('selected-skill'));
-            document.getElementById("equipHint").innerHTML = `🔧 Click a skill, THEN click a slot to equip | Click on any skill in slot to remove`;
+            document.getElementById("equipHint").innerHTML = `🔧 Нажмите на способность, затем на слот для оборудования | Нажмите на способность в слоте для снятия`;
             renderInventory();
-            showToast(`✅ Skill equipped to slot ${slotIndex+1}`, "success");
+            showToast(`✅ Способность одета в слот ${slotIndex+1}`, "success");
         } else {
-            showToast(`First click on a skill, then click on a slot!`, "error");
+            showToast(`Сначало нажмите на способность, затем на слот!`, "error");
         }
     }
     function handleSlotClick(slotIndex) {
@@ -941,8 +933,8 @@
         let slots = equippedSkills.map((sk, i) => `
             <div class="slot ${!sk ? 'empty-slot' : ''}" onclick="handleSlotClick(${i})">
                 <b>SLOT ${i+1}</b><br>
-                ${sk ? sk : "🔘 EMPTY"}
-                ${sk ? '<br><span class="small-text">(click to remove)</span>' : ''}
+                ${sk ? sk : "🔘 Пусто"}
+                ${sk ? '<br><span class="small-text">(клик для снятия)</span>' : ''}
             </div>
         `).join('');
         document.getElementById("skillSlots").innerHTML = slots;
@@ -950,22 +942,22 @@
         let kaguneHtml = kaguneSkillsUnlocked.map(s => `<div class="skill-badge" onclick="selectSkillForEquip('${s}')">⚔️ ${s}<br><span class="small-text">${skillData[s]?.desc || ''}</span></div>`).join('');
         let bossHtml = bossSkillsUnlocked.map(s => `<div class="skill-badge" onclick="selectSkillForEquip('${s}')">👑 ${s}<br><span class="small-text">${skillData[s]?.desc || ''}</span></div>`).join('');
         let defaultHtml = ["Basic Strike","Block"].map(s => `<div class="skill-badge" onclick="selectSkillForEquip('${s}')">🛡️ ${s}<br><span class="small-text">${skillData[s]?.desc || ''}</span></div>`).join('');
-        document.getElementById("kaguneSkills").innerHTML = kaguneHtml || "<div class='small-text'>⭐ Unlock by ranking up</div>";
-        document.getElementById("bossSkills").innerHTML = bossHtml || "<div class='small-text'>🏆 Complete storyline missions</div>";
+        document.getElementById("kaguneSkills").innerHTML = kaguneHtml || "<div class='small-text'>⭐ Откроется при повышение ранга.</div>";
+        document.getElementById("bossSkills").innerHTML = bossHtml || "<div class='small-text'>🏆 Выполните все сюжетные миссии.</div>";
         document.getElementById("defaultSkills").innerHTML = defaultHtml;
     }
 
     function rollRNG(type) {
-        if(rc < 1500) { showToast("Need 1500 RC!", "error"); return; }
+        if(rc < 1500) { showToast("Нужно 1500 RC!", "error"); return; }
         rc -= 1500; pityCounter++;
         let roll = Math.random() * 100;
-        let rarity = "Common";
-        if(roll < 0.1) rarity = "Mythical";
-        else if(roll < 5) rarity = "Legendary";
-        else if(roll < 20) rarity = "Epic";
-        else if(roll < 50) rarity = "Rare";
-        if(pityCounter >= 30 && rarity !== "Mythical") { rarity = "Legendary"; pityCounter = 0; }
-        else if(rarity === "Legendary" || rarity === "Mythical") pityCounter = 0;
+        let rarity = "Обычный";
+        if(roll < 0.1) rarity = "Мифический";
+        else if(roll < 5) rarity = "Легендарный";
+        else if(roll < 20) rarity = "Эпический";
+        else if(roll < 50) rarity = "Редкий";
+        if(pityCounter >= 30 && rarity !== "Мифический") { rarity = "Легендарный"; pityCounter = 0; }
+        else if(rarity === "Легендарный" || rarity === "Мифический") pityCounter = 0;
         
         if(type === "kagune") {
             let opt = { Common:["Wing"], Rare:["Tsukiyama","Yomo"], Epic:["Yamori","Noro"], Legendary:["Ken","Takizawa"], Mythical:["Eto"] };
@@ -981,43 +973,60 @@
             rngItems.rcMulti = picked;
         }
         updateUI();
-        showToast(`🎲 ${type.toUpperCase()} roll: ${rarity}!`, "success");
+        showToast(`🎲 ${type.toUpperCase()} ролл: ${rarity}!`, "success");
     }
     function renderRNG() {
         document.getElementById("rngContainer").innerHTML = `
-            <div class="rng-section"><b>🩸 KAGUNE</b><br>${rngItems.kagune}<br><button class="roll-btn" onclick="rollRNG('kagune')">🎲 ROLL 1500 RC</button></div>
-            <div class="rng-section"><b>🎭 COMBAT STYLE</b><br>${rngItems.combatStyle}<br><button class="roll-btn" onclick="rollRNG('combat')">🎲 ROLL 1500 RC</button></div>
-            <div class="rng-section"><b>📈 RC MULTIPLIER</b><br>${rngItems.rcMulti}<br><button class="roll-btn" onclick="rollRNG('rc')">🎲 ROLL 1500 RC</button></div>
+            <div class="rng-section"><b>🩸 Кагуне</b><br>${rngItems.kagune}<br><button class="roll-btn" onclick="rollRNG('kagune')">🎲 ROLL 1500 RC</button></div>
+            <div class="rng-section"><b>🎭 Боевой стиль</b><br>${rngItems.combatStyle}<br><button class="roll-btn" onclick="rollRNG('combat')">🎲 ROLL 1500 RC</button></div>
+            <div class="rng-section"><b>📈 Множитель RC</b><br>${rngItems.rcMulti}<br><button class="roll-btn" onclick="rollRNG('rc')">🎲 ROLL 1500 RC</button></div>
         `;
-        document.getElementById("pityDisplay").innerHTML = `🎲 PITY: ${pityCounter}/30 | Chances: C:50% R:30% E:15% L:4.9% M:0.1%`;
+        document.getElementById("pityDisplay").innerHTML = `🎲 Круток: ${pityCounter}/30 | Chances: C:50% R:30% E:15% L:4.9% M:0.1%`;
     }
 
     function shopCost(upg) { return 100 * (shopLevels[upg] + 1); }
     function buyYenUpgrade(upg) {
         let cost = shopCost(upg);
-        if(yen >= cost && shopLevels[upg] < 10) { yen -= cost; shopLevels[upg]++; updateUI(); showToast(`⬆️ ${upg} upgraded to level ${shopLevels[upg]}!`, "success"); }
+        if(yen >= cost && shopLevels[upg] < 10) { yen -= cost; shopLevels[upg]++; updateUI(); showToast(`⬆️ ${upg} повышен до уровня ${shopLevels[upg]}!`, "success"); }
         else if(shopLevels[upg] >= 10) showToast(`Max level reached!`, "error");
-        else showToast(`Need ${cost} Yen!`, "error");
+        else showToast(`Нужно ${cost} Yen!`, "error");
     }
     function rebirthPurchase(type) {
-        if(type === "statBoost" && sf >= 60) { sf -= 60; statLevels.STR+=5; statLevels.AGI+=5; statLevels.VIT+=5; statLevels.INT+=5; statLevels.SEN+=5; updateUI(); showToast(`⚡ Stat Boost! +15 total stats`, "success"); }
-        else if(sf >= 50) { sf -= 50; showToast(`+1 ${type} roll added!`, "success"); }
-        else showToast(`Need ${type==="statBoost"?60:50} SF!`, "error");
+        if(type === "statBoost" && sf >= 60) { sf -= 60; statLevels.STR+=5; statLevels.AGI+=5; statLevels.VIT+=5; statLevels.INT+=5; statLevels.SEN+=5; updateUI(); showToast(`⚡ Буст статистик! +15 ко всем статистикам`, "success"); }
+        else if(sf >= 50) { sf -= 50; showToast(`+1 ${type} ролл добавлен!`, "success"); }
+        else showToast(`Нужно ${type==="statBoost"?60:50} SF!`, "error");
     }
     function renderShop() {
-        let yenHtml = Object.keys(shopLevels).map(u => `<div class="shop-item"><span>${u.replace(/([A-Z])/g, ' $1')} Lv${shopLevels[u]}/10</span><button onclick="buyYenUpgrade('${u}')">${shopCost(u)} Y</button></div>`).join('');
+        let shopNames = {
+            trainingSpeed: "🏃 Скорость тренировки",
+            skillBoost: "⚔️ Усиление навыков",
+            yenMulti: "💰 Множитель Yen",
+            hpBoost: "❤️ Бонус HP",
+            defBoost: "🛡️ Бонус защиты",
+            rcMulti: "🩸 Множитель RC",
+            critBoost: "⚡ Шанс крита",
+            luckBoost: "🍀 Удача"
+        };
+        
+        let yenHtml = Object.keys(shopLevels).map(u => `
+            <div class="shop-item">
+                <span>${shopNames[u] || u.replace(/([A-Z])/g, ' $1')} Lv${shopLevels[u]}/10</span>
+                <button onclick="buyYenUpgrade('${u}')">${shopCost(u)} Y</button>
+            </div>
+        `).join('');
         document.getElementById("yenShop").innerHTML = yenHtml;
+        
         document.getElementById("rebirthShop").innerHTML = `
-            <div class="shop-item"><span>🎲 Kagune Roll (+1)</span><button onclick="rebirthPurchase('kagune')">50 SF</button></div>
-            <div class="shop-item"><span>🎭 Combat Style Roll (+1)</span><button onclick="rebirthPurchase('combat')">50 SF</button></div>
-            <div class="shop-item"><span>📈 RC Multi Roll (+1)</span><button onclick="rebirthPurchase('rc')">50 SF</button></div>
-            <div class="shop-item"><span>🌀 Full Reroll (3x)</span><button onclick="rebirthPurchase('full')">120 SF</button></div>
-            <div class="shop-item"><span>⚡ Stat Boost (+15 points)</span><button onclick="rebirthPurchase('statBoost')">60 SF</button></div>
+            <div class="shop-item"><span>🎲 Кагуне ролл (+1)</span><button onclick="rebirthPurchase('kagune')">50 SF</button></div>
+            <div class="shop-item"><span>🎭 Ролл боевого стиля (+1)</span><button onclick="rebirthPurchase('combat')">50 SF</button></div>
+            <div class="shop-item"><span>📈 Ролл множителя RC (+1)</span><button onclick="rebirthPurchase('rc')">50 SF</button></div>
+            <div class="shop-item"><span>🌀 Все роллы (3x)</span><button onclick="rebirthPurchase('full')">120 SF</button></div>
+            <div class="shop-item"><span>⚡ Буст статистик (+15 очков)</span><button onclick="rebirthPurchase('statBoost')">60 SF</button></div>
         `;
     }
 
     function startCombat(enemy) {
-        if(combatCooldown > 0) { showToast(`Wait ${combatCooldown}s!`, "error"); return; }
+        if(combatCooldown > 0) { showToast(`Подождите ${combatCooldown}s!`, "error"); return; }
         currentEnemy = { ...enemy, hp: enemy.hp };
         playerHP = getMaxHP();
         maxPlayerHP = playerHP;
@@ -1030,15 +1039,15 @@
     function useSkill(skillName) {
         if(!inCombat || !currentEnemy) return;
         let skill = skillData[skillName];
-        if(!skill) { showToast("Skill not found!", "error"); return; }
+        if(!skill) { showToast("Способность не найдена!", "error"); return; }
         let baseDmg = getBaseATK();
         let dmg = baseDmg * (skill.dmgMult || 1);
         let crit = (Math.random()*100) < (3 + statLevels.SEN*0.4 + shopLevels.critBoost*3);
         if(crit) dmg *= (1.5 + statLevels.SEN*0.04);
         currentEnemy.hp -= dmg;
         
-        let msg = `${skillName} dealt ${Math.floor(dmg)} dmg!`;
-        if(crit) msg += " CRITICAL!";
+        let msg = `${skillName} нанёс ${Math.floor(dmg)} урона!`;
+        if(crit) msg += " Крит!";
         showToast(msg, "success");
         
         if(currentEnemy.hp <= 0) {
@@ -1051,7 +1060,7 @@
             }
     
             if(currentOptionalWave) {
-                showToast(`💀 DEFEATED! +${reward} RC`, "success");
+                showToast(`💀 Поражение! +${reward} RC`, "success");
                 loadNextWave(); // Загружаем следующую волну
                 return;
             }
@@ -1068,12 +1077,12 @@
                     bossSkillsUnlocked.push(mission.rewardSkill);
                 }
                 yen += 1000;
-                showToast(`✅ ${mission.name} complete! +1000 Yen, gained: ${mission.rewardSkill}`, "success");
+                showToast(`✅ ${mission.name} завершён! +1000 Yen, получено: ${mission.rewardSkill}`, "success");
                 currentStorylineMission = null;
                 isStorylineBattle = false;
                 renderMissions();
             } else {
-                showToast(`💀 VICTORY! +${reward} RC${!isStorylineBattle ? ', Deyour +1' : ''}`, "success");
+                showToast(`💀 Победа! +${reward} RC${!isStorylineBattle ? ', Дейур +1' : ''}`, "success");
             }
             
             renderEnemySelect();
@@ -1098,7 +1107,7 @@
             yen += gain;
             optionalWaves[currentOptionalWave]++;
         
-            showToast(`🎉 RAID COMPLETE! +${gain} Yen for wave ${currentWaveNumber}!`, "success");
+            showToast(`🎉 Рейд завершён! +${gain} Yen за волны ${currentWaveNumber}!`, "success");
         
             currentOptionalWave = null;
             currentWaveIndex = 0;
@@ -1122,11 +1131,11 @@
         };
     
         currentEnemy = waveEnemy;
-        playerHP = getMaxHP(); // Восстанавливаем HP между волнами
+        playerHP = getMaxHP(); 
         maxPlayerHP = playerHP;
         inCombat = true;
     
-        showToast(`⚔️ Next enemy: ${waveEnemy.name}! HP restored!`, "success");
+        showToast(`⚔️ Следующий противник: ${waveEnemy.name}! HP восстановлено!`, "success");
         renderCombatArena();
     }
         
@@ -1137,7 +1146,7 @@
         playerHP -= takenDmg;
         
         if(playerHP <= 0) {
-            showToast(`☠️ DEFEAT! ${currentEnemy.name} killed you.`, "error");
+            showToast(`☠️ Поражение! ${currentEnemy.name} убил тебя.`, "error");
             inCombat = false;
             if(isStorylineBattle) {
                 isStorylineBattle = false;
@@ -1148,7 +1157,7 @@
             document.getElementById("enemySelect").style.display = "block";
             return;
         }
-        showToast(`👊 Enemy hit you for ${Math.floor(takenDmg)} dmg!`, "error");
+        showToast(`👊 Противник нанём тебе ${Math.floor(takenDmg)} урона!`, "error");
         renderCombatArena();
     }
 
@@ -1161,12 +1170,12 @@
         if(currentOptionalWave) {
             currentOptionalWave = null;
             currentWaveIndex = 0;
-            showToast(`🏃 You fled from the raid! Progress lost!`, "error");
+            showToast(`🏃 Ты сбежал с рейда! Прогресс сброшен!`, "error");
         }
         renderEnemySelect();
         document.getElementById("combatArena").style.display = "none";
         document.getElementById("enemySelect").style.display = "block";
-        showToast(`🏃 You fled from combat!`, "error");
+        showToast(`🏃 Ты сбежал с боя!`, "error");
     }
 
     function renderCombatArena() {
@@ -1174,14 +1183,14 @@
         let skillsHtml = equippedSkills.filter(s => s).map(s => `<button class="skill-btn" onclick="useSkill('${s}')">${s}</button>`).join('');
         document.getElementById("combatArena").innerHTML = `
             <div class="combat-arena">
-                <div style="margin-bottom:15px;">⚔️ YOUR TURN → Choose a skill ⚔️</div>
+                <div style="margin-bottom:15px;">⚔️ Твоя очередь → Выбирай способность ⚔️</div>
                 <div class="flex-between"><span>👤 ${playerAvatar.type === 'image' ? '🖼️' : playerAvatar.value} ${playerName}</span><span>🔥 VS 🔥</span><span>👮 ${currentEnemy.name}</span></div>
                 <div class="hp-bar"><div class="hp-fill" style="width:${(playerHP/maxPlayerHP)*100}%"></div></div>
                 <div>❤️ ${Math.floor(playerHP)}/${Math.floor(maxPlayerHP)} HP</div>
                 <div class="hp-bar"><div class="hp-fill" style="width:${(currentEnemy.hp/currentEnemy.maxHp)*100}%"></div></div>
                 <div>💀 ${Math.floor(currentEnemy.hp)}/${currentEnemy.maxHp} HP</div>
                 <div class="skill-buttons">${skillsHtml}</div>
-                <button class="skill-btn" style="background:#2a0a0a;" onclick="fleeCombat()">🏃 FLEE COMBAT</button>
+                <button class="skill-btn" style="background:#2a0a0a;" onclick="fleeCombat()">🏃 Сбежать</button>
             </div>
         `;
     }
@@ -1193,11 +1202,11 @@
             html += `<div class="train-card ${!isUnlocked ? 'locked' : ''}" onclick="${isUnlocked ? `startCombat(${JSON.stringify(enemy).replace(/"/g, '&quot;')})` : ''}">
                 <div class="train-name">${enemy.name}</div>
                 <div class="train-reward">+${enemy.rcReward} RC</div>
-                <div class="train-rank">[${enemy.rankReq}] ${!isUnlocked ? '🔒 LOCKED' : ''}</div>
+                <div class="train-rank">[${enemy.rankReq}] ${!isUnlocked ? '🔒 Закрыто' : ''}</div>
             </div>`;
         }
         html += `</div>`;
-        if(combatCooldown > 0) html += `<div class="small-text" style="text-align:center; margin-top:10px;">⏱️ Next battle in ${combatCooldown}s</div>`;
+        if(combatCooldown > 0) html += `<div class="small-text" style="text-align:center; margin-top:10px;">⏱️ Следующий бой через ${combatCooldown}s</div>`;
         document.getElementById("enemySelect").innerHTML = html;
     }
 
@@ -1234,7 +1243,7 @@
         }
         updateUI();
         closeProfileModal();
-        showToast(`Profile updated!`, "success");
+        showToast(`Профиль обнавлён!`, "success");
     }
 
     function switchTab(tabId) {
