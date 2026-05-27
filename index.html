@@ -336,6 +336,43 @@
             background: linear-gradient(90deg, #cc0000, #ff4444);
             height: 100%; width: 0%; transition: width 0.2s;
         }
+        .mission-item button {
+            background: linear-gradient(135deg, #4a1a1a, #2a0a0a);
+            border: 1px solid #aa3333;
+            color: #ffaa88;
+            padding: 6px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.1s;
+        }
+        .mission-item button:hover {
+            background: linear-gradient(135deg, #6a2a2a, #4a1515);
+            transform: scale(1.02);
+                box-shadow: 0 0 10px rgba(204,0,0,0.4);
+        }
+        .optional-wave button {
+            background: linear-gradient(135deg, #4a1a1a, #2a0a0a);
+            border: 1px solid #aa3333;
+            color: #ffaa88;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.1s;
+        }
+        .optional-wave button:hover {
+            background: linear-gradient(135deg, #6a2a2a, #4a1515);
+            transform: scale(1.02);
+            box-shadow: 0 0 10px rgba(204,0,0,0.4);
+        }
+        .toast {
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 4.7s forwards;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(100%); }
+        }
     </style>
 </head>
 <body>
@@ -441,11 +478,19 @@
 <script>
     function showToast(message, type = "error") {
         const container = document.getElementById("toastContainer");
+        
+        while (container.children.length >= 5) {
+            container.removeChild(container.firstChild);
+        }
+        
         const toast = document.createElement("div");
         toast.className = `toast ${type}`;
         toast.innerText = message;
         container.appendChild(toast);
-        setTimeout(() => { toast.remove(); }, 5000);
+        
+        setTimeout(() => { 
+            if (toast.parentNode) toast.remove(); 
+        }, 5000);
     }
 
     let playerName = "Ghoulish";
@@ -468,6 +513,33 @@
         { name:"The Reaper", rankReq:"SSS", rewardSkill:"Reaper`s Judgement", completed:false }
     ];
     let optionalWaves = { aogiri:0, cochlea:0, owl:0 };
+    let optionalWaveEnemies = {
+        aogiri: {
+            minRank: "B",
+            baseHp: 350,
+            baseAtk: 35,
+            baseReward: 200,
+            enemyNames: ["Aogiri Foot Soldier", "Aogiri Elite", "Yamori's Disciple", "Jason", "Tatara"]
+        },
+        cochlea: {
+            minRank: "A", 
+            baseHp: 500,
+            baseAtk: 50,
+            baseReward: 400,
+            enemyNames: ["Prison Guard", "Arima's Trainee", "Special Class Warden", "Donato", "Arima"]
+        },
+        owl: {
+            minRank: "S",
+            baseHp: 800,
+            baseAtk: 70,
+            baseReward: 800,
+            enemyNames: ["Owl's Minion", "Yoshimura's Acolyte", "One-Eyed Owl", "The Owl", "Eto"]
+        }
+    };
+    let currentOptionalWave = null;
+    let currentWaveIndex = 0;
+    let currentWaveNumber = 0;
+    let totalWavesInRun = 5;
     let rngItems = { kagune:"Wing [Common]", combatStyle:"Aggressive (+10% ATK)", rcMulti:"RC Trickle (x1.0)" };
     let pityCounter = 0;
     
@@ -761,14 +833,43 @@
     }
 
     function startOptional(optName) {
-        let baseReward = { aogiri:200, cochlea:400, owl:800 };
-        let waveReward = { aogiri:30, cochlea:50, owl:80 };
-        let wave = optionalWaves[optName];
-        let gain = baseReward[optName] + wave * waveReward[optName];
-        yen += gain;
-        optionalWaves[optName]++;
-        showToast(`🌊 ${optName.toUpperCase()} Wave ${wave+1} cleared! +${gain} Yen`, "success");
-        updateUI();
+        if(combatCooldown > 0) { 
+            showToast(`Wait ${combatCooldown}s!`, "error"); 
+            return; 
+        }
+    
+        let config = optionalWaveEnemies[optName];
+        if(!config) return;
+    
+        if(rankOrder[rank] < rankOrder[config.minRank]) {
+            showToast(`Need ${config.minRank} rank to start ${optName.toUpperCase()}!`, "error");
+            return;
+        }
+
+        currentOptionalWave = optName;
+        currentWaveNumber = optionalWaves[optName] + 1;
+        currentWaveIndex = 1;
+    
+        let waveEnemy = {
+            name: `${config.enemyNames[0]} (Wave ${currentWaveNumber}.${currentWaveIndex})`,
+            rankReq: config.minRank,
+            rcReward: Math.floor(config.baseReward * (0.5 + currentWaveNumber * 0.1)),
+            hp: config.baseHp + (currentWaveNumber - 1) * 50 + (currentWaveIndex - 1) * 30,
+            maxHp: config.baseHp + (currentWaveNumber - 1) * 50 + (currentWaveIndex - 1) * 30,
+            atk: config.baseAtk + (currentWaveNumber - 1) * 5 + (currentWaveIndex - 1) * 3
+        };
+    
+        currentEnemy = waveEnemy;
+        playerHP = getMaxHP();
+        maxPlayerHP = playerHP;
+        inCombat = true;
+    
+        switchTab('combat');
+        renderCombatArena();
+        document.getElementById("enemySelect").style.display = "none";
+        document.getElementById("combatArena").style.display = "block";
+    
+        showToast(`🌊 ${optName.toUpperCase()} Wave ${currentWaveNumber}.${currentWaveIndex} starting!`, "success");
     }
 
     function renderMissions() {
@@ -789,7 +890,7 @@
         let optionalHtml = `
             <div class="optional-wave"><span><b>AOGIRI RAID</b> [B] - 200Y +30Y/wave<br><span class="small-text">Wave: ${optionalWaves.aogiri}</span></span><button onclick="startOptional('aogiri')">⚔️ RAID</button></div>
             <div class="optional-wave"><span><b>COCHLEA BREAKOUT</b> [A] - 400Y +50Y/wave<br><span class="small-text">Wave: ${optionalWaves.cochlea}</span></span><button onclick="startOptional('cochlea')">⚔️ RAID</button></div>
-            <div class="optional-wave"><span><b>OWL SUPPRESSION</b> [S] - 800Y +80Y/wave<br><span class="small-text">Wave: ${optionalWaves.owl}</span></span><button onclick="startOptional('owl')">⚔️ RAID</button></div>
+            <div class="optional-wave"><span><b>OWL SUPPRESSION</b> [S] - 800Y +80Y/wave<br><span class="small-text">Wave: ${optionalWaves.owl}</span></span><button onclick="startOptional('owl')" disabled="" title="Requires Rank S">⚔️ RAID</button>
         `;
         document.getElementById("optionalMissions").innerHTML = optionalHtml;
     }
@@ -944,9 +1045,15 @@
             let bonus = 1 + (shopLevels.rcMulti * 0.08);
             let reward = Math.floor(currentEnemy.rcReward * bonus);
             rc += reward;
-            
-            if(!isStorylineBattle) {
+    
+            if(!isStorylineBattle && !currentOptionalWave) {
                 deyourProgress++;
+            }
+    
+            if(currentOptionalWave) {
+                showToast(`💀 DEFEATED! +${reward} RC`, "success");
+                loadNextWave(); // Загружаем следующую волну
+                return;
             }
             
             inCombat = false;
@@ -975,6 +1082,53 @@
             updateUI();
             return;
         }
+
+    function loadNextWave() {
+        if(!currentOptionalWave) return;
+    
+        let config = optionalWaveEnemies[currentOptionalWave];
+        currentWaveIndex++;
+        if(currentWaveIndex > totalWavesInRun) {
+            let waveReward = {
+                aogiri: 30,
+                cochlea: 50,
+                owl: 80
+            };
+            let gain = (optionalWaveEnemies[currentOptionalWave].baseReward + currentWaveNumber * waveReward[currentOptionalWave]);
+            yen += gain;
+            optionalWaves[currentOptionalWave]++;
+        
+            showToast(`🎉 RAID COMPLETE! +${gain} Yen for wave ${currentWaveNumber}!`, "success");
+        
+            currentOptionalWave = null;
+            currentWaveIndex = 0;
+            inCombat = false;
+        
+            renderEnemySelect();
+            document.getElementById("combatArena").style.display = "none";
+            document.getElementById("enemySelect").style.display = "block";
+            updateUI();
+            return;
+        }
+    
+        let enemyIndex = Math.min(currentWaveIndex - 1, config.enemyNames.length - 1);
+        let waveEnemy = {
+            name: `${config.enemyNames[enemyIndex]} (Wave ${currentWaveNumber}.${currentWaveIndex})`,
+            rankReq: config.minRank,
+            rcReward: Math.floor(config.baseReward * (0.5 + currentWaveNumber * 0.1)),
+            hp: config.baseHp + (currentWaveNumber - 1) * 50 + (currentWaveIndex - 1) * 30,
+            maxHp: config.baseHp + (currentWaveNumber - 1) * 50 + (currentWaveIndex - 1) * 30,
+            atk: config.baseAtk + (currentWaveNumber - 1) * 5 + (currentWaveIndex - 1) * 3
+        };
+    
+        currentEnemy = waveEnemy;
+        playerHP = getMaxHP(); // Восстанавливаем HP между волнами
+        maxPlayerHP = playerHP;
+        inCombat = true;
+    
+        showToast(`⚔️ Next enemy: ${waveEnemy.name}! HP restored!`, "success");
+        renderCombatArena();
+    }
         
         let enemyDmg = currentEnemy.atk;
         let defReduction = 1 - (shopLevels.defBoost * 0.05);
@@ -1003,6 +1157,11 @@
         if(isStorylineBattle) {
             isStorylineBattle = false;
             currentStorylineMission = null;
+        }
+        if(currentOptionalWave) {
+            currentOptionalWave = null;
+            currentWaveIndex = 0;
+            showToast(`🏃 You fled from the raid! Progress lost!`, "error");
         }
         renderEnemySelect();
         document.getElementById("combatArena").style.display = "none";
